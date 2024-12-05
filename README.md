@@ -19,3 +19,6 @@
 |:------------:|:--------------:|:------------:
 | <img src="https://avatars.githubusercontent.com/u/94839275?v=4" width="120" /> | <img src="https://avatars.githubusercontent.com/u/63226023?v=4" width="120" /> | <img src="https://avatars.githubusercontent.com/u/54170515?v=4" width="120"> |
 | [@heeung](https://github.com/heeung) | [@ppeper](https://github.com/ppeper) | [@jyj1143](https://github.com/jyj1143) |
+
+## 💻 Code Convention
+- [Github Convention](./docs/github_convention.md)
