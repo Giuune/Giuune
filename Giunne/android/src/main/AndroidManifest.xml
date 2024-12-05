@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.project.giunnae.android.MainApplication"
+        android:label="giunnae"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:icon="@drawable/icon_person">
+
+        <activity
+            android:name="com.project.giunnae.android.MainActivity"
+            android:windowSoftInputMode="adjustNothing"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
