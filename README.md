@@ -1,6 +1,6 @@
 # 🚌 Giuune 🚌
 
-<img src="https://github.com/user-attachments/assets/4de16b1a-2880-4cf0-b53a-44a0082c8ec8"/>
+![Images](./assets/giuune_top_banner_image.png)
 
 > 개발 기간: 2024.12.05 ~
 
