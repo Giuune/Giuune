@@ -6,6 +6,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import com.project.giunnae.Res
+import com.project.giunnae.common.util.NotoSans.fontMedium
+import com.project.giunnae.common.util.NotoSans.medium
+import com.project.giunnae.nanum_square_round_bold
+import com.project.giunnae.nanum_square_round_extrabold
+import com.project.giunnae.nanum_square_round_light
+import com.project.giunnae.nanum_square_round_regular
 import com.project.giunnae.noto_sans_bold
 import com.project.giunnae.noto_sans_extrabold
 import com.project.giunnae.noto_sans_light
@@ -51,23 +57,54 @@ object NotoSans {
     }
 }
 
+object NanumRound {
+    var light: FontResource = Res.font.nanum_square_round_light
+    var regular: FontResource = Res.font.nanum_square_round_regular
+    var bold: FontResource = Res.font.nanum_square_round_bold
+    var extraBold: FontResource = Res.font.nanum_square_round_extrabold
+
+    var fontLight: Font = object : Font {
+        override val style: FontStyle = FontStyle.Normal
+        override val weight: FontWeight = FontWeight.Light
+    }
+    var fontRegular: Font = object : Font {
+        override val style: FontStyle = FontStyle.Normal
+        override val weight: FontWeight = FontWeight.Normal
+    }
+    var fontBold: Font = object : Font {
+        override val style: FontStyle = FontStyle.Normal
+        override val weight: FontWeight = FontWeight.Bold
+    }
+    var fontExtraBold: Font = object : Font {
+        override val style: FontStyle = FontStyle.Normal
+        override val weight: FontWeight = FontWeight.ExtraBold
+    }
+
+    @Composable
+    fun initFont() {
+        fontLight = org.jetbrains.compose.resources.Font(light, FontWeight.Light)
+        fontRegular = org.jetbrains.compose.resources.Font(regular, FontWeight.Normal)
+        fontBold = org.jetbrains.compose.resources.Font(bold, FontWeight.Bold)
+        fontExtraBold = org.jetbrains.compose.resources.Font(extraBold, FontWeight.ExtraBold)
+    }
+}
+
 fun GPFont(spec: FontResource): Font {
     return when(spec) {
-        NotoSans.light -> NotoSans.fontLight
-        NotoSans.regular -> NotoSans.fontRegular
-        NotoSans.medium -> NotoSans.fontMedium
-        NotoSans.bold -> NotoSans.fontBold
-        NotoSans.extraBold -> NotoSans.fontExtraBold
-        else -> NotoSans.fontRegular
+        NanumRound.light -> NanumRound.fontLight
+        NanumRound.regular -> NanumRound.fontRegular
+        NanumRound.bold -> NanumRound.fontBold
+        NanumRound.extraBold -> NanumRound.fontExtraBold
+        else -> NanumRound.fontRegular
     }
 }
 
 sealed class GPFontFamily() {
     companion object {
-        val Light = FontFamily(NotoSans.fontLight)
-        val Regular = FontFamily(NotoSans.fontRegular)
-        val Medium = FontFamily(NotoSans.fontMedium)
-        val Bold = FontFamily(NotoSans.fontBold)
-        val ExtraBold = FontFamily(NotoSans.fontExtraBold)
+        val Light = FontFamily(NanumRound.fontLight)
+        val Regular = FontFamily(NanumRound.fontRegular)
+        val Medium = FontFamily(NanumRound.fontRegular)
+        val Bold = FontFamily(NanumRound.fontBold)
+        val ExtraBold = FontFamily(NanumRound.fontExtraBold)
     }
 }

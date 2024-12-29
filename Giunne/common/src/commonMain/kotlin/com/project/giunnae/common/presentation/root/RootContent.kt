@@ -21,6 +21,7 @@ import com.project.giunnae.common.presentation.main.splash.SplashScreen
 import com.project.giunnae.common.presentation.main.student.StudentMainScreen
 import com.project.giunnae.common.presentation.main.teacher.TeacherMainScreen
 import com.project.giunnae.common.presentation.signup.SignupScreen
+import com.project.giunnae.common.util.NanumRound
 import com.project.giunnae.common.util.NotoSans
 import kotlinx.coroutines.delay
 
@@ -31,7 +32,7 @@ fun RootContent(
     modifier: Modifier = Modifier,
 ) {
     /* settings init */
-    NotoSans.initFont()
+    NanumRound.initFont()
     setSingletonImageLoaderFactory { context ->
         newImageLoader(context, true)
     }

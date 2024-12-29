@@ -60,7 +60,7 @@ fun GPTextField(
     val isFocused = remember { mutableStateOf(false) }
 
     val textFieldBorderColor by animateColorAsState(
-        targetValue = if (isFocused.value) GPColor.ButtonBlue else GPColor.Transparent,
+        targetValue = if (isFocused.value) GPColor.MainOrangeColor else GPColor.BorderLightGray,
         animationSpec = if (isFocused.value) {
             tween(durationMillis = 200, easing = FastOutSlowInEasing)
         } else {
@@ -69,7 +69,7 @@ fun GPTextField(
     )
 
     val hintTextXOffset: Dp by animateDpAsState(
-        targetValue = if (isFocused.value) (4.gdp) else 0.gdp,
+        targetValue = if (isFocused.value) (2.gdp) else 0.gdp,
         animationSpec = tween(durationMillis = 200)
     )
 
@@ -92,7 +92,7 @@ fun GPTextField(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(
-                        color = GPColor.BackgroundLightGray,
+                        color = GPColor.White,
                         shape = shape
                     )
                     .border(

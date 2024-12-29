@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -29,9 +31,13 @@ import androidx.compose.ui.text.input.VisualTransformation
 import com.project.giunnae.Res
 import com.project.giunnae.common.presentation.common.addFocusCleaner
 import com.project.giunnae.common.presentation.common.button.GPButton
+import com.project.giunnae.common.presentation.common.dialog.GPAlertDialog
 import com.project.giunnae.common.presentation.common.noRippleClickable
+import com.project.giunnae.common.presentation.common.spacer.SpH
 import com.project.giunnae.common.presentation.common.text.GPText
 import com.project.giunnae.common.presentation.common.textfield.GPTextField
+import com.project.giunnae.common.presentation.login.LoginComponent.Companion.LOGIN_FAIL
+import com.project.giunnae.common.presentation.login.LoginComponent.Companion.NON_FAIL
 import com.project.giunnae.common.ui.theme.GPColor
 import com.project.giunnae.common.util.GLog
 import com.project.giunnae.common.util.GPFontFamily
@@ -40,6 +46,7 @@ import com.project.giunnae.common.util.gsp
 import com.project.giunnae.icon_lock
 import com.project.giunnae.icon_person
 import com.project.giunnae.image_logo
+import com.project.giunnae.image_logo_rb
 import org.jetbrains.compose.resources.painterResource
 
 private const val TAG = "LoginScreen"
@@ -52,6 +59,7 @@ internal fun LoginScreen(
     GLog.d(TAG, "onCreate")
 
     val focusManager = LocalFocusManager.current
+    val loginFailEffect by component.loginFailEffect.collectAsState(NON_FAIL)
 
     Scaffold(
         modifier = Modifier
@@ -62,7 +70,7 @@ internal fun LoginScreen(
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .background(GPColor.White),
+                .background(GPColor.BackgroundLightGray),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -71,10 +79,10 @@ internal fun LoginScreen(
                     .wrapContentHeight()
                     .fillMaxWidth()
                     .padding(horizontal = 16.gdp),
-                painter = painterResource(Res.drawable.image_logo),
+                painter = painterResource(Res.drawable.image_logo_rb),
                 contentDescription = "Giunnae Logo"
             )
-            Spacer(modifier = Modifier.height(60.gdp))
+            Spacer(modifier = Modifier.height(32.gdp))
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -82,90 +90,112 @@ internal fun LoginScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                GPTextField(
+                Column(
                     modifier = Modifier
                         .padding(horizontal = 16.gdp)
                         .fillMaxWidth()
-                        .height(60.gdp)
-                        .background(color = GPColor.BackgroundLightGray)
-                        .shadow(3.gdp, RoundedCornerShape(20.gdp)),
-                    shape = RoundedCornerShape(20.gdp),
-                    textStyle = TextStyle(
-                        color = GPColor.TextBlack,
-                        fontSize = 12.gsp,
-                        fontFamily = GPFontFamily.Medium
-                    ),
-                    value = component.id,
-                    onValueChange = { component.id = it },
-                    border = true,
-                    placeholder = {
-                        GPText(
-                            text = "아이디",
-                            textSize = 12.gsp,
-                            fontFamily = GPFontFamily.Medium,
-                            textColor = GPColor.ButtonGray
-                        )
-                    },
-                    prefix = {
-                        Image(
-                            modifier = Modifier.size(16.gdp),
-                            painter = painterResource(Res.drawable.icon_person),
-                            contentDescription = null,
-                            colorFilter = ColorFilter.tint(color = GPColor.ButtonGray)
-                        )
-                    },
-                )
-                Spacer(modifier = Modifier.size(20.gdp))
-                GPTextField(
+                ) {
+                    GPText(
+                        text = "아이디",
+                        textColor = GPColor.TextBlack,
+                        fontFamily = GPFontFamily.Bold,
+                        textSize = 14.gsp
+                    )
+                    SpH(4.gdp)
+                    GPTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.gdp)
+                            .background(color = GPColor.White),
+                        shape = RoundedCornerShape(10.gdp),
+                        textStyle = TextStyle(
+                            color = GPColor.TextBlack,
+                            fontSize = 12.gsp,
+                            fontFamily = GPFontFamily.Medium
+                        ),
+                        value = component.id,
+                        onValueChange = { component.id = it },
+                        border = true,
+                        placeholder = {
+                            GPText(
+                                text = "teacher",
+                                textSize = 12.gsp,
+                                fontFamily = GPFontFamily.Medium,
+                                textColor = GPColor.TextLightGray
+                            )
+                        },
+//                        prefix = {
+//                            Image(
+//                                modifier = Modifier.size(16.gdp),
+//                                painter = painterResource(Res.drawable.icon_person),
+//                                contentDescription = null,
+//                                colorFilter = ColorFilter.tint(color = GPColor.ButtonGray)
+//                            )
+//                        },
+                    )
+                }
+                SpH(20.gdp)
+                Column(
                     modifier = Modifier
                         .padding(horizontal = 16.gdp)
                         .fillMaxWidth()
-                        .height(60.gdp)
-                        .background(color = GPColor.BackgroundLightGray)
-                        .shadow(3.gdp, RoundedCornerShape(20.gdp)),
-                    shape = RoundedCornerShape(20.gdp),
-                    textStyle = TextStyle(
-                        color = GPColor.TextBlack,
-                        fontSize = 12.gsp,
-                        fontFamily = GPFontFamily.Medium
-                    ),
-                    value = component.pass,
-                    onValueChange = { component.pass = it },
-                    border = true,
-                    visualTransformation = PasswordVisualTransformation(),
-                    placeholder = {
-                        GPText(
-                            text = "비밀번호",
-                            textSize = 12.gsp,
-                            fontFamily = GPFontFamily.Medium,
-                            textColor = GPColor.ButtonGray
-                        )
-                    },
-                    prefix = {
-                        Image(
-                            modifier = Modifier.size(16.gdp),
-                            painter = painterResource(Res.drawable.icon_lock),
-                            contentDescription = null,
-                            colorFilter = ColorFilter.tint(color = GPColor.ButtonGray),
-                            contentScale = ContentScale.FillHeight
-                        )
-                    },
-                )
-                Spacer(Modifier.height(20.gdp))
+                ) {
+                    GPText(
+                        text = "비밀번호",
+                        textColor = GPColor.TextBlack,
+                        fontFamily = GPFontFamily.Bold,
+                        textSize = 14.gsp
+                    )
+                    SpH(4.gdp)
+                    GPTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.gdp)
+                            .background(color = GPColor.White),
+                        shape = RoundedCornerShape(10.gdp),
+                        textStyle = TextStyle(
+                            color = GPColor.TextBlack,
+                            fontSize = 12.gsp,
+                            fontFamily = GPFontFamily.Medium
+                        ),
+                        value = component.pass,
+                        onValueChange = { component.pass = it },
+                        border = true,
+                        visualTransformation = PasswordVisualTransformation(),
+                        placeholder = {
+                            GPText(
+                                text = "********",
+                                textSize = 12.gsp,
+                                fontFamily = GPFontFamily.Medium,
+                                textColor = GPColor.TextLightGray
+                            )
+                        },
+//                        prefix = {
+//                            Image(
+//                                modifier = Modifier.size(16.gdp),
+//                                painter = painterResource(Res.drawable.icon_lock),
+//                                contentDescription = null,
+//                                colorFilter = ColorFilter.tint(color = GPColor.ButtonGray),
+//                                contentScale = ContentScale.FillHeight
+//                            )
+//                        },
+                    )
+                }
+                SpH(20.gdp)
                 GPButton(
                     modifier = Modifier
                         .padding(horizontal = 16.gdp)
                         .fillMaxWidth()
-                        .height(40.gdp),
-                    normalColor = GPColor.ButtonBlack,
-                    pressColor = GPColor.ButtonPressBlack,
-                    hoverColor = GPColor.ButtonHoverBlack,
+                        .height(56.gdp),
+                    normalColor = GPColor.ButtonOrange,
+                    pressColor = GPColor.ButtonPressOrange,
+                    hoverColor = GPColor.ButtonHoverOrange,
                     onClick = {
                         component.onLoginButtonClick()
                     },
                 ) {
                     GPText(
-                        text = "Login",
+                        text = "로그인",
                         textSize = 14.gsp,
                         fontFamily = GPFontFamily.Bold,
                         textColor = GPColor.White
@@ -184,19 +214,28 @@ internal fun LoginScreen(
                             .noRippleClickable { navigateSignup() },
                         text = "아직 회원이 아니신가요?",
                         textSize = 12.gsp,
-                        textColor = GPColor.ButtonGray,
-                        fontFamily = GPFontFamily.Bold
+                        textColor = GPColor.MainOrangeColor,
+                        fontFamily = GPFontFamily.Regular
                     )
                     GPText(
                         modifier = Modifier
                             .noRippleClickable {  },
                         text = "아이디 / 비밀번호 찾기",
                         textSize = 12.gsp,
-                        textColor = GPColor.ButtonGray,
-                        fontFamily = GPFontFamily.Bold
+                        textColor = GPColor.ButtonLightGray,
+                        fontFamily = GPFontFamily.Regular
                     )
                 }
             }
+        }
+    }
+    with(loginFailEffect) {
+        if (this == LOGIN_FAIL) {
+            GPAlertDialog(
+                dismiss = { component.dismissDialog() },
+                title = "로그인 실패",
+                content = "로그인에 실패하였습니다. 확인해주세요.",
+            )
         }
     }
 }
