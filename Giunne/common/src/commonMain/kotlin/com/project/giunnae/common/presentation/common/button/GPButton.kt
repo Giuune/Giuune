@@ -29,7 +29,7 @@ internal fun GPButton(
     pressColor: Color,
     hoverColor: Color? = null,
     onClick: () -> Unit,
-    shape: Shape = RoundedCornerShape(16.gdp),
+    shape: Shape = RoundedCornerShape(12.gdp),
     content: @Composable (RowScope.() -> Unit),
 ) {
     val isPressed by interactionSource.collectIsPressedAsState()
@@ -37,10 +37,10 @@ internal fun GPButton(
 
     Row(
         modifier = modifier
-            .shadow(
-                elevation = if(isPressed) 0.gdp else 3.gdp,
-                shape = shape,
-            )
+//            .shadow(
+//                elevation = if(isPressed) 0.gdp else 3.gdp,
+//                shape = shape,
+//            )
             .background(
                 color = when {
                     isPressed -> pressColor
