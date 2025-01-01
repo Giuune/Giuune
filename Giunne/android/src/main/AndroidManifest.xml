@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.project.giunnae.android.MainApplication"
+        android:name="com.project.giunne.android.MainApplication"
         android:label="giunnae"
         android:allowBackup="false"
         android:supportsRtl="true"
@@ -13,7 +13,7 @@
         android:icon="@drawable/icon_person">
 
         <activity
-            android:name="com.project.giunnae.android.MainActivity"
+            android:name="com.project.giunne.android.MainActivity"
             android:windowSoftInputMode="adjustNothing"
             android:exported="true">
             <intent-filter>
