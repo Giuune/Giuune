@@ -1,7 +1,6 @@
 package com.project.giunne.common.presentation.common.topbar
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,14 +11,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.project.giunne.Res
-import com.project.giunne.common.presentation.common.badge.GPNotificationBadge
 import com.project.giunne.common.util.gdp
 import com.project.giunne.image_giunne
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun GPTopBarWithImage(
-    modifier: Modifier = Modifier,
     title: @Composable () -> Unit = {},
     rightIcon: @Composable () -> Unit = {}
 ) {
