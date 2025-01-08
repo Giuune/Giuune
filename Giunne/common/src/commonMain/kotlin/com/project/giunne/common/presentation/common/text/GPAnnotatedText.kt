@@ -14,7 +14,7 @@ import com.project.giunne.common.util.GPFontFamily
 import com.project.giunne.common.util.gsp
 
 @Composable
-fun GPAnnotatedString(
+fun GPAnnotatedText(
     modifier: Modifier = Modifier,
     text: AnnotatedString,
     textSize: TextUnit = 14.gsp,

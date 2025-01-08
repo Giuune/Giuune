@@ -14,7 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import com.project.giunne.Res
 import com.project.giunne.common.presentation.common.shape.GPSquircleShape
-import com.project.giunne.common.presentation.common.text.GPAnnotatedString
+import com.project.giunne.common.presentation.common.text.GPAnnotatedText
 import com.project.giunne.common.ui.theme.GPColor
 import com.project.giunne.common.util.gdp
 import com.project.giunne.common.util.gsp
@@ -44,7 +44,7 @@ fun TeacherCheckingBox(
 
             Spacer(modifier = Modifier.width(10.gdp))
 
-            GPAnnotatedString(
+            GPAnnotatedText(
                 text = buildAnnotatedString {
                     append("선생님이\n")
                     withStyle(
