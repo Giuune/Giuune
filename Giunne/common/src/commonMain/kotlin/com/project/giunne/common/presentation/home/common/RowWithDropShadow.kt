@@ -1,4 +1,4 @@
-package com.project.giunne.common.presentation.home.student.content
+package com.project.giunne.common.presentation.home.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
