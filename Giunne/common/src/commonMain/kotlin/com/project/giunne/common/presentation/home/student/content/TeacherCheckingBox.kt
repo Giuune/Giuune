@@ -17,6 +17,7 @@ import com.project.giunne.Res
 import com.project.giunne.common.presentation.common.shape.GPSquircleShape
 import com.project.giunne.common.presentation.common.text.GPAnnotatedText
 import com.project.giunne.common.presentation.home.common.BorderButton
+import com.project.giunne.common.presentation.home.common.RowWithDropShadow
 import com.project.giunne.common.ui.theme.GPColor
 import com.project.giunne.common.util.gdp
 import com.project.giunne.common.util.gsp
@@ -44,40 +45,39 @@ fun TeacherCheckingBox(
                 painter = painterResource(Res.drawable.icon_student_check),
                 contentDescription = null
             )
-
-            Spacer(modifier = Modifier.width(10.gdp))
-
-            GPAnnotatedText(
-                text = buildAnnotatedString {
-                    append("선생님이\n")
-                    withStyle(
-                        style = SpanStyle(
-                            color = GPColor.MainOrangeColor,
-                            fontSize = 18.gsp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    ) {
-                        append(teacherStateTitle)
-                    }
-                    append("이에요!")
-                },
-            )
-
-            Spacer(modifier = Modifier.width(10.gdp))
-
-            BorderButton(
-                modifier = Modifier.wrapContentSize(),
-                title = "게시판 보러가기",
-                content = {
-                    Icon(
-                        modifier = Modifier.height(12.gdp),
-                        painter = painterResource(Res.drawable.icon_next),
-                        contentDescription = "게시판 보러가기",
-                        tint = GPColor.MainOrangeColor
-                    )
-                }
-            )
         }
 
+        Spacer(modifier = Modifier.width(10.gdp))
+
+        GPAnnotatedText(
+            text = buildAnnotatedString {
+                append("선생님이\n")
+                withStyle(
+                    style = SpanStyle(
+                        color = GPColor.MainOrangeColor,
+                        fontSize = 18.gsp,
+                        fontWeight = FontWeight.Bold
+                    )
+                ) {
+                    append(teacherStateTitle)
+                }
+                append("이에요!")
+            },
+        )
+
+        Spacer(modifier = Modifier.width(10.gdp))
+
+        BorderButton(
+            modifier = Modifier.wrapContentSize(),
+            title = "게시판 보러가기",
+            content = {
+                Icon(
+                    modifier = Modifier.height(12.gdp),
+                    painter = painterResource(Res.drawable.icon_next),
+                    contentDescription = "게시판 보러가기",
+                    tint = GPColor.MainOrangeColor
+                )
+            }
+        )
     }
 }
