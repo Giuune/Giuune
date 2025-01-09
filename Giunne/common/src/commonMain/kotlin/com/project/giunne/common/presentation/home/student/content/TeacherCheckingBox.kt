@@ -1,6 +1,7 @@
 package com.project.giunne.common.presentation.home.student.content
 
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -15,9 +16,11 @@ import androidx.compose.ui.text.withStyle
 import com.project.giunne.Res
 import com.project.giunne.common.presentation.common.shape.GPSquircleShape
 import com.project.giunne.common.presentation.common.text.GPAnnotatedText
+import com.project.giunne.common.presentation.home.common.BorderButton
 import com.project.giunne.common.ui.theme.GPColor
 import com.project.giunne.common.util.gdp
 import com.project.giunne.common.util.gsp
+import com.project.giunne.icon_next
 import com.project.giunne.icon_student_check
 import org.jetbrains.compose.resources.painterResource
 
@@ -63,7 +66,16 @@ fun TeacherCheckingBox(
             Spacer(modifier = Modifier.width(10.gdp))
 
             BorderButton(
-                modifier = Modifier.wrapContentSize()
+                modifier = Modifier.wrapContentSize(),
+                title = "게시판 보러가기",
+                content = {
+                    Icon(
+                        modifier = Modifier.height(12.gdp),
+                        painter = painterResource(Res.drawable.icon_next),
+                        contentDescription = "게시판 보러가기",
+                        tint = GPColor.MainOrangeColor
+                    )
+                }
             )
         }
 
