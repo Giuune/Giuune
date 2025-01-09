@@ -42,23 +42,23 @@ fun StudentRoadMapLevelBox(
                 contentDescription = null
             )
 
-            Spacer(modifier = Modifier.width(10.gdp))
-
-            GPAnnotatedText(
-                text = buildAnnotatedString {
-                    append("현재 나는 ")
-                    withStyle(
-                        style = SpanStyle(
-                            color = GPColor.MainOrangeColor,
-                            fontSize = 18.gsp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    ) {
-                        append("${roadMapLevel}단계 ")
-                    }
-                    append("진행중이에요!")
-                },
-            )
         }
+        Spacer(modifier = Modifier.width(10.gdp))
+
+        GPAnnotatedText(
+            text = buildAnnotatedString {
+                append("현재 나는 ")
+                withStyle(
+                    style = SpanStyle(
+                        color = GPColor.MainOrangeColor,
+                        fontSize = 18.gsp,
+                        fontWeight = FontWeight.Bold
+                    )
+                ) {
+                    append("${roadMapLevel}단계 ")
+                }
+                append("진행중이에요!")
+            },
+        )
     }
 }
