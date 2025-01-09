@@ -1,4 +1,4 @@
-package com.project.giunne.common.presentation.home.student.content
+package com.project.giunne.common.presentation.home.common
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -26,6 +26,8 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun BorderButton(
     modifier: Modifier = Modifier,
+    title: String,
+    content: @Composable () -> Unit = {}
 ) {
     Row(
         modifier = modifier
@@ -33,22 +35,14 @@ fun BorderButton(
             .border(BorderStroke(1.gdp, GPColor.MainOrangeColor), RoundedCornerShape(12.gdp))
             .padding(14.gdp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.spacedBy(8.gdp)
     ) {
         GPText(
-            text = "게시판 보러가기",
+            text = title,
             textSize = 12.gsp,
             fontFamily = GPFontFamily.Bold,
             textColor = GPColor.MainOrangeColor
         )
-
-        Spacer(modifier = Modifier.width(4.gdp))
-
-        Icon(
-            modifier = Modifier.height(12.gdp),
-            painter = painterResource(Res.drawable.icon_next),
-            contentDescription = "게시판 보러가기",
-            tint = GPColor.MainOrangeColor
-        )
+        content()
     }
 }
