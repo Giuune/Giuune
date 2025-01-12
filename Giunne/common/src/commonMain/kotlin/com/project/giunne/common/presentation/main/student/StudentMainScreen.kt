@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -35,6 +36,7 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stac
 import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
 import com.project.giunne.Res
 import com.project.giunne.common.presentation.certification.student.StudentCertificationScreen
+import com.project.giunne.common.presentation.common.dropdown.GPDropdownMenu
 import com.project.giunne.common.presentation.common.noRippleClickable
 import com.project.giunne.common.presentation.common.text.GPText
 import com.project.giunne.common.presentation.common.topbar.GPMainTopBar
@@ -64,33 +66,49 @@ fun StudentMainScreen(
 
     val childStack by component.childStack.subscribeAsState()
     val activeComponent = childStack.active.instance
+    var testOptionItem by remember { mutableStateOf("선택해주세요.") }
 
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            GPMainTopBar(
-                titleText = when (activeComponent) {
-                    is StudentMainComponent.StudentChild.StudentHomeChild -> "홈"
-                    is StudentMainComponent.StudentChild.StudentRoadmapChild -> "로드맵"
-                    is StudentMainComponent.StudentChild.StudentCertificationChild -> "인증"
-                    is StudentMainComponent.StudentChild.StudentFriendsChild -> "친구"
-                    is StudentMainComponent.StudentChild.StudentMyPageChild -> "내정보"
-                },
-            )
-            StudentChildren(
+        Box {
+            Column(
                 modifier = Modifier
-                    .weight(1f)
-                ,
-                component = component
-            )
-            StudentBottomNav(
-                component = component,
-                activeComponent = activeComponent
-            )
+                    .fillMaxSize()
+            ) {
+                GPMainTopBar(
+                    titleText = when (activeComponent) {
+                        is StudentMainComponent.StudentChild.StudentHomeChild -> ""
+                        is StudentMainComponent.StudentChild.StudentRoadmapChild -> "로드맵"
+                        is StudentMainComponent.StudentChild.StudentCertificationChild -> "인증"
+                        is StudentMainComponent.StudentChild.StudentFriendsChild -> "친구"
+                        is StudentMainComponent.StudentChild.StudentMyPageChild -> "내정보"
+                    },
+                )
+                StudentChildren(
+                    modifier = Modifier
+                        .weight(1f)
+                    ,
+                    component = component
+                )
+                StudentBottomNav(
+                    component = component,
+                    activeComponent = activeComponent
+                )
+            }
+            if (activeComponent is StudentMainComponent.StudentChild.StudentHomeChild) {
+                /* TODO(추후 API에서 불러오도록 변경) */
+                GPDropdownMenu(
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(top = 8.gdp),
+                    options = listOf("Option 1기", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6", "Option 7"),
+                    selectedOption = testOptionItem,
+                    onOptionSelected = {
+                        testOptionItem = it
+                    }
+                )
+            }
         }
     }
 }
@@ -99,7 +117,7 @@ fun StudentMainScreen(
 fun StudentBottomNav(
     modifier: Modifier = Modifier,
     component: StudentMainComponent,
-    activeComponent: StudentMainComponent. StudentChild
+    activeComponent: StudentMainComponent.StudentChild
 ) {
     Row(
         modifier = modifier
