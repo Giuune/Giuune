@@ -32,7 +32,7 @@ fun TeacherCheckingBox(
 ) {
     RowWithDropShadow(
         modifier = modifier
-            .padding(16.gdp)
+            .padding(horizontal = 16.gdp)
     ) {
         GPSquircleShape(
             modifier = Modifier
