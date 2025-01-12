@@ -7,6 +7,7 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -36,10 +37,6 @@ internal fun GPButton(
 
     Row(
         modifier = modifier
-//            .shadow(
-//                elevation = if(isPressed) 0.gdp else 3.gdp,
-//                shape = shape,
-//            )
             .background(
                 color = when {
                     isPressed -> pressColor
@@ -48,6 +45,7 @@ internal fun GPButton(
                 },
                 shape = shape
             )
+            .padding(horizontal = 16.gdp)
             .pointerHoverIcon(icon = PointerIcon.Hand)
             .noRippleClickable(
                 interactionSource = interactionSource
