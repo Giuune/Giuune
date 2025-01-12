@@ -1,12 +1,10 @@
 package com.project.giunne.common.presentation.main.teacher
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.project.giunne.common.presentation.home.teacher.TeacherEmptyHomeScreen
 
 @Composable
 fun TeacherMainScreen(
@@ -16,13 +14,12 @@ fun TeacherMainScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Text(
-                modifier = Modifier.align(Alignment.Center),
-                text = "TeacherMainScreen"
-            )
-        }
+        /* TODO("Default 화면 나중에 API 통신 후 구현") */
+        TeacherEmptyHomeScreen(
+            modifier = Modifier.fillMaxSize(),
+            roadMapTitle = "",
+            onValueChange = {},
+            onCreateRoadMapClick = {}
+        )
     }
 }
