@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.project.giunne.Res
+import com.project.giunne.common.ui.theme.GPColor
 import com.project.giunne.icon_badge
 import org.jetbrains.compose.resources.painterResource
 
@@ -29,7 +30,7 @@ fun GPNotificationBadge(
                 if (0 < count) {
                     Badge(
                         modifier = Modifier.offset(x = (-4).dp,y = (-4).dp),
-                        containerColor = Color(0xFFFF814D),
+                        containerColor = GPColor.MainOrangeColor,
                         contentColor = Color.White
                     ) {
                         val formatCount = if (100 <= count) { "99.." } else count
