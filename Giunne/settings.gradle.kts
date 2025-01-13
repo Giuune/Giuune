@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Giunnae"
+rootProject.name = "Giunne"
 
 include(":android", ":desktop", ":common")
 
