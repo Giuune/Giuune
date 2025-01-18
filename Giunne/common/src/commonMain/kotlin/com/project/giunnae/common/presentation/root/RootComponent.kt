@@ -35,7 +35,8 @@ public class RootComponent(
     sealed class Child {
         class SplashChild: Child()
         class LoginChild(val component: LoginComponent) : Child()
-        class SignupChild(val component: SignupComponent) : Child()
+        class SignupTypeChild(): Child()
+        class SignupChild(val component: SignupComponent, val type: String) : Child()
         class StudentMainChild(val component: StudentMainComponent) : Child()
         class TeacherMainChild(val component: TeacherMainComponent) : Child()
     }
@@ -51,7 +52,8 @@ public class RootComponent(
                     goToTeacherMain = { navigateToTeacherMain() },
                 )
             )
-            is Config.Signup -> Child.SignupChild(SignupComponent(componentContext))
+            is Config.SignupType -> Child.SignupTypeChild()
+            is Config.Signup -> Child.SignupChild(SignupComponent(componentContext), config.type)
             is Config.StudentMain -> Child.StudentMainChild(StudentMainComponent(componentContext))
             is Config.TeacherMain -> Child.TeacherMainChild(TeacherMainComponent(componentContext))
         }
@@ -65,7 +67,10 @@ public class RootComponent(
         data object Login : Config
 
         @Serializable
-        data object Signup : Config
+        data object SignupType : Config
+
+        @Serializable
+        data class Signup(val type: String) : Config
 
         @Serializable
         data object StudentMain : Config
@@ -82,10 +87,18 @@ public class RootComponent(
         navigation.replaceCurrent(Config.Login)
     }
 
-    fun navigateToSignup() {
+    fun navigateToSignupType() {
         navigation.navigate {
             it.toMutableList().apply {
-                add(Config.Signup)
+                add(Config.SignupType)
+            }
+        }
+    }
+
+    fun navigateToSignup(type: String) {
+        navigation.navigate {
+            it.toMutableList().apply {
+                add(Config.Signup(type))
             }
         }
     }

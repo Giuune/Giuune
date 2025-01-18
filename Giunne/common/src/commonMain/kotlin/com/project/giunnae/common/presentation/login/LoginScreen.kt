@@ -71,9 +71,10 @@ internal fun LoginScreen(
             modifier = modifier
                 .fillMaxSize()
                 .background(GPColor.BackgroundLightGray),
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            SpH(100.gdp)
             Image( // 로고 이미지
                 modifier = Modifier
                     .wrapContentHeight()
@@ -95,13 +96,13 @@ internal fun LoginScreen(
                         .padding(horizontal = 16.gdp)
                         .fillMaxWidth()
                 ) {
-                    GPText(
-                        text = "아이디",
-                        textColor = GPColor.TextBlack,
-                        fontFamily = GPFontFamily.Bold,
-                        textSize = 14.gsp
-                    )
-                    SpH(4.gdp)
+//                    GPText(
+//                        text = "아이디",
+//                        textColor = GPColor.TextBlack,
+//                        fontFamily = GPFontFamily.Bold,
+//                        textSize = 14.gsp
+//                    )
+//                    SpH(4.gdp)
                     GPTextField(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -116,6 +117,7 @@ internal fun LoginScreen(
                         value = component.id,
                         onValueChange = { component.id = it },
                         border = true,
+                        paddingHorizontal = 14.gdp,
                         placeholder = {
                             GPText(
                                 text = "teacher",
@@ -124,14 +126,14 @@ internal fun LoginScreen(
                                 textColor = GPColor.TextLightGray
                             )
                         },
-//                        prefix = {
-//                            Image(
-//                                modifier = Modifier.size(16.gdp),
-//                                painter = painterResource(Res.drawable.icon_person),
-//                                contentDescription = null,
-//                                colorFilter = ColorFilter.tint(color = GPColor.ButtonGray)
-//                            )
-//                        },
+                        prefix = {
+                            Image(
+                                modifier = Modifier.size(14.gdp),
+                                painter = painterResource(Res.drawable.icon_person),
+                                contentDescription = null,
+                                colorFilter = ColorFilter.tint(color = GPColor.ButtonGray)
+                            )
+                        },
                     )
                 }
                 SpH(20.gdp)
@@ -140,13 +142,13 @@ internal fun LoginScreen(
                         .padding(horizontal = 16.gdp)
                         .fillMaxWidth()
                 ) {
-                    GPText(
-                        text = "비밀번호",
-                        textColor = GPColor.TextBlack,
-                        fontFamily = GPFontFamily.Bold,
-                        textSize = 14.gsp
-                    )
-                    SpH(4.gdp)
+//                    GPText(
+//                        text = "비밀번호",
+//                        textColor = GPColor.TextBlack,
+//                        fontFamily = GPFontFamily.Bold,
+//                        textSize = 14.gsp
+//                    )
+//                    SpH(4.gdp)
                     GPTextField(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -162,6 +164,7 @@ internal fun LoginScreen(
                         onValueChange = { component.pass = it },
                         border = true,
                         visualTransformation = PasswordVisualTransformation(),
+                        paddingHorizontal = 14.gdp,
                         placeholder = {
                             GPText(
                                 text = "********",
@@ -170,15 +173,15 @@ internal fun LoginScreen(
                                 textColor = GPColor.TextLightGray
                             )
                         },
-//                        prefix = {
-//                            Image(
-//                                modifier = Modifier.size(16.gdp),
-//                                painter = painterResource(Res.drawable.icon_lock),
-//                                contentDescription = null,
-//                                colorFilter = ColorFilter.tint(color = GPColor.ButtonGray),
-//                                contentScale = ContentScale.FillHeight
-//                            )
-//                        },
+                        prefix = {
+                            Image(
+                                modifier = Modifier.size(14.gdp),
+                                painter = painterResource(Res.drawable.icon_lock),
+                                contentDescription = null,
+                                colorFilter = ColorFilter.tint(color = GPColor.ButtonGray),
+                                contentScale = ContentScale.FillHeight
+                            )
+                        },
                     )
                 }
                 SpH(20.gdp)

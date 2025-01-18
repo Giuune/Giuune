@@ -106,7 +106,7 @@ fun StudentMainScreen(
 fun StudentBottomNav(
     modifier: Modifier = Modifier,
     component: StudentMainComponent,
-    activeComponent: StudentMainComponent. StudentChild
+    activeComponent: StudentMainComponent.StudentChild
 ) {
     Row(
         modifier = modifier
@@ -190,7 +190,7 @@ fun NavItem(
 ) {
     val iconColor by animateColorAsState(
         targetValue = when {
-            onTop -> GPColor.ButtonBlue
+            onTop -> GPColor.MainOrangeColor
             else -> GPColor.ButtonGray
         },
     )

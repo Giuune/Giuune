@@ -34,11 +34,12 @@ import com.project.giunnae.common.util.gsp
 @Composable
 fun SignupInputColumn(
     modifier: Modifier = Modifier,
-    onConfirmButtonClicked: (() -> Unit)? = null,
+    sideContent: @Composable () -> Unit = {  },
     titleText: String,
-    inputHintText: String = "",
     text: String,
+    hintText: String = "",
     onTextChanged: (String) -> Unit,
+    focusable: Boolean = true,
     focusManager: FocusManager,
 ) {
     Column(
@@ -49,55 +50,28 @@ fun SignupInputColumn(
     ) {
         Row(
             modifier = Modifier
-                .height(40.gdp)
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             GPText(
                 text = titleText,
-                textSize = 13.gsp,
+                textSize = 14.gsp,
                 textColor = GPColor.TextBlack,
-                fontFamily = GPFontFamily.Medium
+                fontFamily = GPFontFamily.Bold
             )
-            if (onConfirmButtonClicked != null) {
-                GPButton(
-                    modifier = Modifier
-                        .width(100.gdp)
-                        .height(32.gdp),
-                    shape = RoundedCornerShape(12.gdp),
-                    normalColor = GPColor.ButtonBlack,
-                    pressColor = GPColor.ButtonPressBlack,
-                    hoverColor = GPColor.ButtonHoverBlack,
-                    onClick = { onConfirmButtonClicked() },
-                ) {
-                    GPText(
-                        text = "중복확인",
-                        textSize = 14.gsp,
-                        fontFamily = GPFontFamily.Bold,
-                        textColor = GPColor.White
-                    )
-                }
-            } else if (inputHintText.isNotEmpty()) {
-                GPText(
-                    text = inputHintText,
-                    textSize = 11.gsp,
-                    fontFamily = GPFontFamily.Medium,
-                    textColor = GPColor.ButtonGray
-                )
-            }
+            sideContent()
         }
-        SpH(4.gdp)
+        SpH(6.gdp)
         GPTextField(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.gdp)
-                .background(color = GPColor.BackgroundLightGray)
-                .shadow(2.gdp, RoundedCornerShape(12.gdp)),
-            shape = RoundedCornerShape(12.gdp),
+                .background(color = GPColor.White),
+            shape = RoundedCornerShape(10.gdp),
             textStyle = TextStyle(
                 color = GPColor.TextBlack,
-                fontSize = 12.gsp,
+                fontSize = 14.gsp,
                 fontFamily = GPFontFamily.Medium
             ),
             keyboardOptions = KeyboardOptions(
@@ -110,6 +84,17 @@ fun SignupInputColumn(
                 onNext = { focusManager.moveFocus(FocusDirection.Next) },
                 onDone = { focusManager.clearFocus() }
             ),
+            placeholder = {
+                if (hintText.isNotEmpty()) {
+                    GPText(
+                        text = hintText,
+                        textColor = GPColor.TextLightGray,
+                        textSize = 14.gsp,
+                        fontFamily = GPFontFamily.Medium
+                    )
+                }
+            },
+            focusable = focusable,
             value = text,
             onValueChange = { onTextChanged(it) },
             border = true,
