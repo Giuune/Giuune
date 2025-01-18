@@ -14,16 +14,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.project.giunne.Res
 import com.project.giunne.common.presentation.common.addFocusCleaner
@@ -92,13 +97,6 @@ internal fun LoginScreen(
                         .padding(horizontal = 16.gdp)
                         .fillMaxWidth()
                 ) {
-//                    GPText(
-//                        text = "아이디",
-//                        textColor = GPColor.TextBlack,
-//                        fontFamily = GPFontFamily.Bold,
-//                        textSize = 14.gsp
-//                    )
-//                    SpH(4.gdp)
                     GPTextField(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -130,6 +128,14 @@ internal fun LoginScreen(
                                 colorFilter = ColorFilter.tint(color = GPColor.ButtonGray)
                             )
                         },
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Next
+                        ),
+                        keyboardActions = KeyboardActions(
+                            onNext = {
+                                focusManager.moveFocus(FocusDirection.Next)
+                            }
+                        ),
                     )
                 }
                 SpH(20.gdp)
@@ -138,13 +144,6 @@ internal fun LoginScreen(
                         .padding(horizontal = 16.gdp)
                         .fillMaxWidth()
                 ) {
-//                    GPText(
-//                        text = "비밀번호",
-//                        textColor = GPColor.TextBlack,
-//                        fontFamily = GPFontFamily.Bold,
-//                        textSize = 14.gsp
-//                    )
-//                    SpH(4.gdp)
                     GPTextField(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -178,6 +177,14 @@ internal fun LoginScreen(
                                 contentScale = ContentScale.FillHeight
                             )
                         },
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Done
+                        ),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                component.onLoginButtonClick()
+                            }
+                        ),
                     )
                 }
                 SpH(20.gdp)
