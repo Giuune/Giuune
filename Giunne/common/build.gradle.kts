@@ -1,4 +1,4 @@
-group = "com.project.giunnae"
+group = "com.project.giunne"
 version = "1.0-SNAPSHOT"
 
 plugins {
@@ -99,7 +99,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.project.giunnae"
+    namespace = "com.project.giunne"
     compileSdk = 34
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
@@ -118,5 +118,5 @@ android {
 compose.resources {
     publicResClass = true
     generateResClass = auto
-    packageOfResClass = "com.project.giunnae"
+    packageOfResClass = "com.project.giunne"
 }

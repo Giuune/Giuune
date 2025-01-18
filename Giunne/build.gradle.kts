@@ -1,4 +1,4 @@
-group = "com.project.giunnae"
+group = "com.project.giunne"
 version = "1.0-SNAPSHOT"
 
 plugins {

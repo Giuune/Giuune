@@ -1,6 +1,6 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
-group = "com.project.giunnae"
+group = "com.project.giunne"
 version = "1.0-SNAPSHOT"
 
 plugins {
@@ -34,7 +34,7 @@ compose.desktop {
         nativeDistributions {
             modules("java.sql", "java.instrument", "java.compiler", "jdk.unsupported")
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "Giunnae"
+            packageName = "Giunne"
             packageVersion = "1.0.0"
         }
         jvmArgs += listOf(

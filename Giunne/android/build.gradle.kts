@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-group = "com.project.giunnae"
+group = "com.project.giunne"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -20,10 +20,10 @@ dependencies {
 }
 
 android {
-    namespace = "com.project.giunnae"
+    namespace = "com.project.giunne"
     compileSdk = 34
     defaultConfig {
-        applicationId = "com.project.giunnae.android"
+        applicationId = "com.project.giunne.android"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
